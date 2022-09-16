@@ -46,11 +46,14 @@ def ImageMatching(model):
     while True:
         frame = cv.imread('./data/face.jpg')
         image, face = face_detector(frame)
+        if frame == []:
+            return 0           
         face = cv.cvtColor(face, cv.COLOR_BGR2GRAY)
         result = model.predict(face) 
         if result[1] < 500:
             confidence = int(100*(1-(result[1])/300))
         os.remove('./data/face.jpg')
+        
         return confidence
     
 def GetModel():

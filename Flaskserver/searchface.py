@@ -8,7 +8,7 @@ import os
 global confidence
 
 def face_detector(img):
-    face_classifier = cv.CascadeClassifier('./source/haarcascade_frontalface_default.xml')
+    face_classifier = cv.CascadeClassifier('./Raspi/haarcascade_frontalface_default.xml')
     gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
     faces = face_classifier.detectMultiScale(gray,1.3,5)
     if faces is():
@@ -20,7 +20,7 @@ def face_detector(img):
     return img,roi   
 
 def learnFace():
-    face_cascade = cv.CascadeClassifier('./source/haarcascade_frontalface_default.xml')
+    face_cascade = cv.CascadeClassifier('./Raspi/haarcascade_frontalface_default.xml')
     model = cv.face.LBPHFaceRecognizer_create()
     data_path = './data/'
     onlyfiles = [f for f in listdir(data_path) if isfile(join(data_path,f))]
